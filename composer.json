@@ -1,0 +1,22 @@
+{
+	"name": "awesome9/email",
+	"description": "WordPress email manager.",
+	"type": "library",
+	"license": "GPL-3.0-or-later",
+	"authors": [
+		{
+			"name": "Awesome9",
+			"email": "me@awesome9.co"
+		}
+	],
+	"require": {
+		"php": ">=5.6",
+		"awesome9/templates": "^1.0"
+	},
+	"config": {
+		"optimize-autoloader": true
+	},
+	"autoload": {
+		"classmap" : [ "src/" ]
+	}
+}

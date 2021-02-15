@@ -1,0 +1,67 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "06bfa929dbb8aafca31fbd2026935cde",
+    "packages": [
+        {
+            "name": "awesome9/templates",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AwesomeNine/Templates.git",
+                "reference": "173905e293c276f6fc6d1764b499cb273539d1f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AwesomeNine/Templates/zipball/173905e293c276f6fc6d1764b499cb273539d1f4",
+                "reference": "173905e293c276f6fc6d1764b499cb273539d1f4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Awesome9\\Templates\\": "src"
+                },
+                "files": [
+                    "src/functions.php"
+                ],
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Awesome9",
+                    "email": "me@awesome9.co"
+                }
+            ],
+            "description": "Wrapper for WordPress Filesystem and Templates.",
+            "support": {
+                "issues": "https://github.com/AwesomeNine/Templates/issues",
+                "source": "https://github.com/AwesomeNine/Templates/tree/1.0.3"
+            },
+            "time": "2021-01-01T03:00:25+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.6"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}
