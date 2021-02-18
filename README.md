@@ -12,7 +12,7 @@
 
 ## 📃 About Email
 
-This package provides ease of managing data localization within WordPress.
+This package provides ease of designing and sending emails within WordPress.
 
 ## 💾 Installation
 
@@ -25,8 +25,9 @@ composer require awesome9/email
 First, you need to spin out configuration for your email.
 
 ```php
-Awesome9\Email\Email::get()
-	->set_object_name( 'awesome9' );  // Default object name to be output.
+Awesome9\Email\Manager::get()
+	->set_from_name( 'Awesome9' )
+	->set_from_email( 'info@awesome9.co' );
 ```
 
 Now, let's add and remove some data to be output in admin.
