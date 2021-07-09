@@ -66,7 +66,7 @@ class Email {
 	 *  @var array $plain_search
 	 *  @see $plain_replace
 	 */
-	public $plain_search = array(
+	public $plain_search = [
 		"/\r/",                                                  // Non-legal carriage return.
 		'/&(nbsp|#0*160);/i',                                    // Non-breaking space.
 		'/&(quot|rdquo|ldquo|#0*8220|#0*8221|#0*147|#0*148);/i', // Double quotes.
@@ -86,7 +86,7 @@ class Email {
 		'/&(dollar|#0*36);/i',                                   // Dollar sign.
 		'/&[^&\s;]+;/i',                                         // Unknown/unhandled entities.
 		'/[ ]{2,}/',                                             // Runs of spaces, post-handling.
-	);
+	];
 
 	/**
 	 *  List of pattern replacements corresponding to patterns searched.
@@ -94,7 +94,7 @@ class Email {
 	 *  @var array $plain_replace
 	 *  @see $plain_search
 	 */
-	public $plain_replace = array(
+	public $plain_replace = [
 		'',              // Non-legal carriage return.
 		' ',             // Non-breaking space.
 		'"',             // Double quotes.
@@ -114,14 +114,14 @@ class Email {
 		'$',             // Dollar sign.
 		'',              // Unknown/unhandled entities.
 		' ',             // Runs of spaces, post-handling.
-	);
+	];
 
 	/**
 	 * Strings to find/replace in subjects/headings.
 	 *
 	 * @var array
 	 */
-	protected $placeholders = array();
+	protected $placeholders = [];
 
 	/**
 	 * Constructor.
@@ -131,11 +131,11 @@ class Email {
 
 		// Find/Replace.
 		$this->placeholders = array_merge(
-			array(
+			[
 				'{site_address}' => $domain,
 				'{site_url}'     => $domain,
 				'{site_title}'   => Manager::get()->get_blogname(),
-			),
+			],
 			$this->placeholders
 		);
 	}
@@ -224,7 +224,7 @@ class Email {
 	 * @return string
 	 */
 	public function get_headers() {
-		$headers   = array();
+		$headers   = [];
 		$headers[] = 'Content-Type: ' . $this->get_content_type();
 		$headers[] = 'Reply-to: ' . Manager::get()->get_from_name() . ' <' . Manager::get()->get_from_email() . '>';
 
@@ -259,7 +259,7 @@ class Email {
 	 * @return array
 	 */
 	public function get_attachments() {
-		return array();
+		return [];
 	}
 
 	/**
@@ -269,17 +269,17 @@ class Email {
 	 * @param  array  $args Array of arguments to be used in templates.
 	 * @return bool success
 	 */
-	public function send( $to, $args = array() ) {
-		add_filter( 'wp_mail_from', array( Manager::get(), 'get_from_email' ) );
-		add_filter( 'wp_mail_from_name', array( Manager::get(), 'get_from_name' ) );
-		add_filter( 'wp_mail_content_type', array( $this, 'get_content_type' ) );
+	public function send( $to, $args = [] ) {
+		add_filter( 'wp_mail_from', [ Manager::get(), 'get_from_email' ] );
+		add_filter( 'wp_mail_from_name', [ Manager::get(), 'get_from_name' ] );
+		add_filter( 'wp_mail_content_type', [ $this, 'get_content_type' ] );
 
 		$this->args = wp_parse_args(
 			$args,
-			array(
+			[
 				'email'   => $this,
 				'heading' => $this->get_heading(),
-			)
+			]
 		);
 
 		$return = wp_mail(
@@ -290,9 +290,9 @@ class Email {
 			$this->get_attachments()
 		);
 
-		remove_filter( 'wp_mail_from', array( Manager::get(), 'get_from_email' ) );
-		remove_filter( 'wp_mail_from_name', array( Manager::get(), 'get_from_name' ) );
-		remove_filter( 'wp_mail_content_type', array( $this, 'get_content_type' ) );
+		remove_filter( 'wp_mail_from', [ Manager::get(), 'get_from_email' ] );
+		remove_filter( 'wp_mail_from_name', [ Manager::get(), 'get_from_name' ] );
+		remove_filter( 'wp_mail_content_type', [ $this, 'get_content_type' ] );
 
 		return $return;
 	}
